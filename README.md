@@ -1,4 +1,4 @@
-# Mike's dotfiles for linux clusters
+# Mike's dotfiles for CentOS clusters
 
 * I maintain this repo as *my* dotfiles, forked from the amazing Paul Irish
 * All bash awesomeness is from Paul
