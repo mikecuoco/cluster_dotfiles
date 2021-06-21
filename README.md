@@ -2,6 +2,8 @@
 
 * I maintain this repo as *my* dotfiles, forked from the amazing Paul Irish
 * All bash awesomeness is from Paul
+* I removed all macOS-centric stuff from Paul's setup
+* I added favorite tools to .``env.yaml``
 
 ## overview of files
 
@@ -17,6 +19,7 @@
 * `.exports`
 * `.functions`
 * `.extra` - not included, explained below
+*  `.env.yaml` - psuedobase conda env with all my favorite shell tools
 
 #### manual run
 * `symlink-setup.sh`  - sets up symlinks for all dotfiles and vim config.
