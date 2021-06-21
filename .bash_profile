@@ -100,7 +100,7 @@ shopt -s globstar 2> /dev/null
 ## load conda
 ##
 if ! command -v conda &> /dev/null; then
-    echo "Conda is not installed. Please install conda and source this file again."
+    echo "Conda is not installed, please install conda and source this file again."
 else
     # check if shell environment is present
     conda activate shell
@@ -109,7 +109,6 @@ else
         conda env create -f ~/code/cluster_dotfiles/.env.yaml
     fi
     conda activate shell
-    conda env update -f ~/code/cluster_dotfiles/.env.yaml
 fi
 
 # source z
@@ -120,5 +119,13 @@ fi
 
 #  check for updates
 cd ~/code/cluster_dotfiles
-git fetch && git pull
+git fetch
+reslog=$(git log HEAD..origin/master --oneline)
+# pull only if needed
+if [[ "${reslog}" != "" ]] ; then
+    git pull
+    # TODO add if statement to check of .env.yaml has changed
+    conda env update -f ~/code/cluster_dotfiles/.env.yaml
+fi
+
 cd ~
