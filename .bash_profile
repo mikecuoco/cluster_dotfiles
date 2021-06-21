@@ -117,3 +117,8 @@ if [ ! -f ~/code/z.sh ]; then
     curl https://raw.githubusercontent.com/rupa/z/master/z.sh > ~/code/z.sh
 fi
 . ~/code/z.sh
+
+#  check for updates
+cd ~/code/cluster_dotfiles
+git fetch && git pull
+cd ~
