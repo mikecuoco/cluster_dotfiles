@@ -42,6 +42,7 @@ I have some EXPORTS, my PATH construction, and a few aliases for ssh'ing into my
 ## TO-DOs
 
  - [ ] add all my conda yamls
+     - [ ] add auto-updates to those envs
  - [ ] fix `tmux.conf`
  - [ ] add `.curlrc`
  - [ ] setup or remove cron
