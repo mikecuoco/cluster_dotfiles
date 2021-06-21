@@ -95,3 +95,17 @@ shopt -s dirspell 2> /dev/null
 
 # Turn on recursive globbing (enables ** to recurse all directories)
 shopt -s globstar 2> /dev/null
+
+##
+## load conda
+##
+if ! command -v conda &> /dev/null; then
+    echo "conda is not installed"
+else
+    conda activate shell
+    if [ $? -eq 1 ]; then
+        echo "installing shell env"
+        conda env create -f ~/.env
+    fi
+    conda activate shell
+fi
