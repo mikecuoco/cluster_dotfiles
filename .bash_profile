@@ -100,12 +100,20 @@ shopt -s globstar 2> /dev/null
 ## load conda
 ##
 if ! command -v conda &> /dev/null; then
-    echo "conda is not installed"
+    echo "Conda is not installed. Please install conda and source this file again."
 else
+    # check if shell environment is present
     conda activate shell
     if [ $? -eq 1 ]; then
-        echo "installing shell env"
-        conda env create -f ~/.env.yaml
+        echo "installing shell environment..."
+        conda env create -f ~/code/cluster_dotfiles/.env.yaml
     fi
     conda activate shell
+    conda env update -f ~/code/cluster_dotfiles/.env.yaml
 fi
+
+# source z
+if [ ! -f ~/code/z.sh ]; then
+    curl https://raw.githubusercontent.com/rupa/z/master/z.sh > ~/code/z.sh
+fi
+. ~/code/z.sh
