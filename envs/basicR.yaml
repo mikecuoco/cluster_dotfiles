@@ -1,0 +1,6 @@
+name: basicR
+dependencies:
+  - conda-forge::r-base
+  - conda-forge::r-essentials
+  - r::rstudio # not sure if this works on a server
+  - r::r-irkernel # for jupyter support
