@@ -105,7 +105,7 @@ else
     conda activate shell
     if [ $? -eq 1 ]; then
         echo "installing shell env"
-        conda env create -f ~/.env
+        conda env create -f ~/.env.yaml
     fi
     conda activate shell
 fi
