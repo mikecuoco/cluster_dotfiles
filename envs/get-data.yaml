@@ -1,0 +1,10 @@
+nane: get-data
+dependencies:
+  - conda-forge::awscli
+  - bioconda::sra-tools
+  - bioconda::entrez-direct
+  - hcc::aspera-cli
+  - conda-forge::gdrive
+  - bioconda::enabrowsertools
+  - bioconda::samtools
+  - bioconda::bcftools
