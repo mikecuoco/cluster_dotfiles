@@ -3,3 +3,4 @@ dependencies:
   - conda-forge::r-base
   - conda-forge::r-essentials
   - r::r-irkernel # for jupyter support
+  - conda-forge::gdrive
