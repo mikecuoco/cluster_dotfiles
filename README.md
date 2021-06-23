@@ -42,9 +42,12 @@ I have some EXPORTS, my PATH construction, and a few aliases for ssh'ing into my
 ## TO-DOs
 
  - [ ] add all my conda yamls
+     - [ ] get-data.yaml
+     - [ ] snakemake.yaml
      - [ ] add auto-updates to those envs
  - [ ] fix `tmux.conf`
  - [ ] add `.curlrc`
  - [ ] setup or remove cron
  - [ ] setup `.gemrc`?
  - [ ] install my custom `bin` (not on github yet as of 06/20/2021) 
+ - [ ] add `.Rprofile`
