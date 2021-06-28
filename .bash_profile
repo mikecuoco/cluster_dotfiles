@@ -130,7 +130,7 @@ reslog=$(git log HEAD..origin/master --oneline)
 if [[ "${reslog}" != "" ]] ; then
     git pull
     # TODO add if statement to check of .env.yaml has changed
-    conda env update -f ~/code/cluster_dotfiles/.env.yaml
+    mamba env update -f ~/code/cluster_dotfiles/.env.yaml
 fi
 
 cd ~
