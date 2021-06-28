@@ -102,11 +102,16 @@ shopt -s globstar 2> /dev/null
 if ! command -v conda &> /dev/null; then
     echo "Conda is not installed, please install conda and source this file again."
 else
+    # check if mamba is installed
+    if ! command -v mamba &> /dev/null; then
+        echo  "installing mamba..."
+        conda install mamba -n base -c conda-forge
+    fi
     # check if shell environment is present
     conda activate shell
     if [ $? -eq 1 ]; then
         echo "installing shell environment..."
-        conda env create -f ~/code/cluster_dotfiles/.env.yaml
+        mamba env create -f ~/code/cluster_dotfiles/.env.yaml
     fi
     conda activate shell
 fi
