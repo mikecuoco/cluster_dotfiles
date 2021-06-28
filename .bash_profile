@@ -105,7 +105,7 @@ else
     # check if mamba is installed
     if ! command -v mamba &> /dev/null; then
         echo  "installing mamba..."
-        conda install mamba -n base -c conda-forge
+        conda install mamba -n base -c conda-forge -y
     fi
     # check if shell environment is present
     conda activate shell
