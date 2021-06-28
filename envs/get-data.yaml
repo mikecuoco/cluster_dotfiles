@@ -1,4 +1,8 @@
 nane: get-data
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
 dependencies:
   - conda-forge::awscli
   - bioconda::sra-tools
@@ -8,3 +12,4 @@ dependencies:
   - bioconda::enabrowsertools
   - bioconda::samtools
   - bioconda::bcftools
+  - bioconda::genomepy
