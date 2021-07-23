@@ -92,13 +92,6 @@
 	tool = opendiff
 	renameLimit = 0
 
-
-[url "git@github.com:"]
-	insteadOf = https://github.com/
-
-[url "git://gist.github.com/"]
-	insteadOf = "gist:"
-
 # correct typos
 [help]
 	autocorrect = 1
@@ -138,3 +131,5 @@
 	date = relative
 [user]
 	name = mikecuoco
+[credential]
+	helper = cache
