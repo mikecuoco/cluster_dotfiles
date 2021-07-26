@@ -5,6 +5,7 @@ channels:
   - defaults
 dependencies:
   - conda-forge::awscli
+  - conda-forge::gsutil
   - bioconda::sra-tools
   - bioconda::entrez-direct
   - hcc::aspera-cli
