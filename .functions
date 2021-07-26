@@ -114,17 +114,6 @@ function nullify() {
   "$@" >/dev/null 2>&1
 }
 
-# initialize nvm
-function nv () {
-	export NVM_DIR="/Users/paulirish/.nvm"
-	[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-}
-
-# initialize rvm
-function rv () {
-	[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-}
-
 # initialize conda
 cond () {
 	__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
