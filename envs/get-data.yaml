@@ -4,6 +4,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - conda-forge::bdbag
   - conda-forge::awscli
   - conda-forge::gsutil
   - bioconda::sra-tools

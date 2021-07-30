@@ -1,0 +1,35 @@
+#!/bin/bash
+
+function get_rmsk() {
+
+  # assign arguments
+  GENOME=$1
+  
+  #  downlaod rmsk file if needed
+  URL="https://hgdownload.cse.ucsc.edu/goldenPath/${GENOME}/database/rmsk.txt.gz"
+  RMSK="${GENOME}_rmsk.txt.gz"
+  
+  if [ ! -f $RMSK ]; then
+      echo "Downloading $RMSK from $URL"
+      curl -s $URL > $RMSK
+      gunzip $RMSK
+  fi
+  
+  #  download makeTEgtf.pl if needed
+  URL="http://labshare.cshl.edu/shares/mhammelllab/www-data/TEtranscripts/TE_GTF/makeTEgtf.pl.gz"
+  makeGTF="~/code/makeTEgtf.pl.gz"
+  if [ ! -f $makeGTF ]; then
+    echo "Downloading $makeGTF from $URL"
+    curl -s $URL > $makeGTF
+    gunzip $makeGTF
+  fi
+  
+  # Make into GTF file
+  RMSK="${GENOME}_rmsk.txt"
+  GTF="${GENOME}_rmsk.gtf"
+  if [ ! -f $GTF ]; then
+      echo "making $GTF from $RMSK"
+      perl ~/mcuoco/code/makeTEgtf.pl -c 6 -s 7 -e 8 -o 10 -n ${GENOME}_rmsk -t 11 -C 12 -f 13 -S 2 $RMSK > $GTF
+  fi
+
+}
