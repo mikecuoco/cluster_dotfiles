@@ -2,34 +2,44 @@
 
 function get_rmsk() {
 
-  # assign arguments
+  # assign global variables
   GENOME=$1
-  
+  CACHE=~/.cache/annotations
+
   #  downlaod rmsk file if needed
   URL="https://hgdownload.cse.ucsc.edu/goldenPath/${GENOME}/database/rmsk.txt.gz"
-  RMSK="${GENOME}_rmsk.txt.gz"
-  
-  if [ ! -f $RMSK ]; then
+  RMSK="${GENOME}_rmsk.txt"
+ 
+  # create cache directory and code
+  mkdir -p $CACHE
+  mkdir -p ~/code/bin
+
+  if [ ! -f ${CACHE}/${RMSK} ]; then
       echo "Downloading $RMSK from $URL"
-      curl -s $URL > $RMSK
-      gunzip $RMSK
+      curl -s $URL > ${CACHE}/${RMSK}.gz && gunzip ${CACHE}/${RMSK}.gz
   fi
   
   #  download makeTEgtf.pl if needed
   URL="http://labshare.cshl.edu/shares/mhammelllab/www-data/TEtranscripts/TE_GTF/makeTEgtf.pl.gz"
-  makeGTF="~/code/makeTEgtf.pl.gz"
+  makeGTF=~/code/bin/makeTEgtf.pl
+
   if [ ! -f $makeGTF ]; then
     echo "Downloading $makeGTF from $URL"
-    curl -s $URL > $makeGTF
-    gunzip $makeGTF
+    curl -s $URL > ${makeGTF}.gz && gunzip ${makeGTF}.gz
   fi
   
   # Make into GTF file
-  RMSK="${GENOME}_rmsk.txt"
   GTF="${GENOME}_rmsk.gtf"
-  if [ ! -f $GTF ]; then
+  if [ ! -f ${CACHE}/${GTF} ]; then
       echo "making $GTF from $RMSK"
-      perl ~/mcuoco/code/makeTEgtf.pl -c 6 -s 7 -e 8 -o 10 -n ${GENOME}_rmsk -t 11 -C 12 -f 13 -S 2 $RMSK > $GTF
+      perl $makeGTF -c 6 -s 7 -e 8 -o 10 -n ${GENOME}_rmsk -t 11 -C 12 -f 13 -S 2 ${CACHE}/${RMSK} > ${CACHE}/${GTF}
   fi
+
+  # Make symlinks
+  
+  echo "Linking ${CACHE}/${RMSK} to $RMSK"
+  ln -fs ${CACHE}/${RMSK} $RMSK
+  echo "Linking ${CACHE}/${GTF} to $GTF"
+  ln -fs ${CACHE}/${GTF} $GTF 
 
 }
