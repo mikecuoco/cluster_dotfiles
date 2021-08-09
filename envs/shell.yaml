@@ -1,0 +1,19 @@
+# this is a conda environment for my general-use shell tools
+# see the end of .bash_profile for the setup of this
+name: shell
+dependencies:
+  - conda-forge::vim # editor 
+  - conda-forge::socat # for proxies
+  - conda-forge::exa # better ls
+  - conda-forge::bat # better cat
+  - conda-forge::glances # better top
+  - conda-forge::git 
+  - conda-forge::gh # github client
+  - conda-forge::lazygit # easy repo management
+  - conda-forge::delta # pretty diffs
+  - conda-forge::fzf # awesome file finder
+  - conda-forge::the_silver_searcher # better grep (shortcut = ag)
+  - conda-forge::rclone # cloud access
+  - conda-forge::xsv # csv manipulation
+  - conda-forge::cookiecutter # project templates
+  - conda-forge::pandoc # doc conversion
