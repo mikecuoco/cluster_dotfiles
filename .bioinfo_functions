@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# get rmsk annotation for genome build from UCSC
 function get_rmsk() {
 
   # assign global variables
@@ -41,5 +42,39 @@ function get_rmsk() {
   ln -fs ${CACHE}/${RMSK} $RMSK
   echo "Linking ${CACHE}/${GTF} to $GTF"
   ln -fs ${CACHE}/${GTF} $GTF 
+
+}
+
+# get sra files from SRR_Acc_List.txt
+function get_sra () {
+
+  # activate conda environment
+  if ! command -v 'get-data' &>/dev/null && \€€
+    command -v 'conda' && \
+    [ "$CONDA_DEFAULT_ENV" != "get-data" ] && \
+    conda info --envs | grep "CONDA_ROOT/get-data" $>/dev/null; then
+      echo "attempting to switch to get-data environmet"
+      eval "$(conda shell.bash hook)"
+      conda activate get-data
+  fi
+
+  mkdir -p 
+  while read -r ACC;
+  do
+    # use command group to store exit code  
+    { prefetch $ACC && vdb-validate $ACC && fasterq-dump --split-files $ACC && gzip $ACC*fastq && rm -r $ACC; }
+
+    if [ $? -eq 0 ]
+    then
+      # print message in green
+      printf "\e[0;32m  [✔] $ACC downloading and unpacking succeeded \e[0m\n"
+    else
+      # print message in red
+      printf "\e[0;31m  [✖] $ACC downloading and unpacking failed \e[0m\n"
+      echo "$ACC" >> failed_Acc.txt
+    fi
+
+  done < $1
+
 
 }
