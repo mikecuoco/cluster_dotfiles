@@ -129,8 +129,6 @@ reslog=$(git log HEAD..origin/master --oneline)
 # pull only if needed
 if [[ "${reslog}" != "" ]] ; then
     git pull
-    # TODO add if statement to check of .env.yaml has changed
-    mamba env update -f ~/code/cluster_dotfiles/.env.yaml
 fi
 
 cd ~
