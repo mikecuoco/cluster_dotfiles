@@ -58,9 +58,9 @@ function get_sra () {
       conda activate get-data
   fi
 
-  mkdir -p raw_fastq
-  cd raw_fastq
-  
+  # create output directory
+  mkdir -p raw_fastq && cd raw_fastq
+
   while read -r ACC;
   do
     # use command group to store exit code  
@@ -76,7 +76,7 @@ function get_sra () {
       echo "$ACC" >> failed_Acc.txt
     fi
 
-  done < $1
+  done < ../$1
 
 
 }
