@@ -48,12 +48,15 @@ function get_rmsk() {
 # get sra files from SRR_Acc_List.txt
 function get_sra () {
 
+  ACC_FILE=$1
+  THREADS=$2
+
   # activate conda environment
   if ! command -v 'prefetch' &>/dev/null && \
     command -v 'conda' && \
     [ "$CONDA_DEFAULT_ENV" != "get-data" ] && \
     conda info --envs | grep "CONDA_ROOT/get-data" $>/dev/null; then
-      echo "attempting to switch to get-data environmet"
+      printf "\n\e[0;35m Attempting to switch to get-data environment \e[0m\n\n"
       eval "$(conda shell.bash hook)"
       conda activate get-data
   fi
@@ -63,8 +66,11 @@ function get_sra () {
 
   while read -r ACC;
   do
+    # print in purple
+    printf "\n\e[0;35m Downloading and unpacking $ACC ... \e[0m\n\n"
+
     # use command group to store exit code  
-    { prefetch $ACC && vdb-validate $ACC && fasterq-dump --split-files $ACC && gzip $ACC*fastq && rm -r $ACC; }
+    { prefetch $ACC && vdb-validate $ACC && fasterq-dump $ACC --split-files -f -e $THREADS && gzip $ACC*fastq && rm -r $ACC; }
 
     if [ $? -eq 0 ]
     then
@@ -73,10 +79,10 @@ function get_sra () {
     else
       # print message in red
       printf "\e[0;31m  [✖] $ACC downloading and unpacking failed \e[0m\n"
-      echo "$ACC" >> failed_Acc.txt
+      echo "$ACC" >> ../failed_acc.txt
     fi
 
-  done < ../$1
+  done < ../$ACC_FILE
 
 
 }
