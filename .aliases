@@ -37,12 +37,6 @@ alias ll='ls -la'
 alias lsd='ls -l | grep "^d"' # only directories
 #    `la` defined in .functions
 
-# exa shortcuts (https://github.com/ogham/exa)
-alias e='exa'
-alias el='exa -l --git'
-alias ela='exa -la --git'
-###
-
 ###
 # GIT STUFF
 
@@ -75,8 +69,10 @@ alias free_diskspace_report="diskspace_report"
 # Shortcuts
 alias g="git"
 alias lg="lazygit"
+alias gl="glances"
 alias v="vim"
 alias ungz="gunzip -k"
+alias ll='exa -la --git'
 
 # File size
 alias fs="stat -f \"%z bytes\""
