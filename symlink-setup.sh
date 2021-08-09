@@ -144,7 +144,7 @@ print_success() {
 
 # finds all .dotfiles in this folder
 declare -a FILES_TO_SYMLINK=$(find . -maxdepth 1 -type f -name ".*" -not -name .DS_Store -not -name .git -not -name .macos | sed -e 's|//|/|' | sed -e 's|./.|.|' | sort)
-FILES_TO_SYMLINK="$FILES_TO_SYMLINK .vim" # add in vim 
+FILES_TO_SYMLINK="$FILES_TO_SYMLINK .vim tmux.conf" # add in vim 
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
