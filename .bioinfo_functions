@@ -70,15 +70,15 @@ function get_sra () {
     printf "\n\e[0;35m Downloading and unpacking $ACC ... \e[0m\n\n"
 
     # use command group to store exit code  
-    { prefetch $ACC && vdb-validate $ACC && fasterq-dump $ACC --split-files -f -e $THREADS && gzip $ACC*fastq && rm -r $ACC; }
+    { prefetch $ACC && vdb-validate $ACC && fasterq-dump $ACC --split-files -f -e $THREADS && gzip $ACC*fastq && rm -rf $ACC; }
 
     if [ $? -eq 0 ]
     then
       # print message in green
-      printf "\e[0;32m  [✔] $ACC downloading and unpacking succeeded \e[0m\n"
+      printf "\n\e[0;32m  [✔] $ACC downloading and unpacking succeeded \e[0m\n"
     else
       # print message in red
-      printf "\e[0;31m  [✖] $ACC downloading and unpacking failed \e[0m\n"
+      printf "\n\e[0;31m  [✖] $ACC downloading and unpacking failed \e[0m\n"
       echo "$ACC" >> ../failed_acc.txt
     fi
 
