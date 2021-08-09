@@ -49,7 +49,7 @@ function get_rmsk() {
 function get_sra () {
 
   # activate conda environment
-  if ! command -v 'get-data' &>/dev/null && \€€
+  if ! command -v 'get-data' &>/dev/null && \
     command -v 'conda' && \
     [ "$CONDA_DEFAULT_ENV" != "get-data" ] && \
     conda info --envs | grep "CONDA_ROOT/get-data" $>/dev/null; then
