@@ -17,3 +17,8 @@ dependencies:
   - conda-forge::xsv # csv manipulation
   - conda-forge::cookiecutter # project templates
   - conda-forge::pandoc # doc conversion
+  - bioconda::samtools 
+  - bioconda::bamtools
+  - bioconda::bedtools
+  - bioconda::vcftools
+  - bioconda::bcftools
