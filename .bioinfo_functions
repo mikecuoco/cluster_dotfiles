@@ -86,3 +86,30 @@ function get_sra () {
 
 
 }
+
+function filter_multi () {
+  
+  # assign input
+  BAM=$1
+  name=${BAM%".bam"}
+
+  # activate conda environment
+  if ! command -v 'bamtools' &>/dev/null && \
+    command -v 'conda' && \
+    [ "$CONDA_DEFAULT_ENV" != "shell" ] && \
+    conda info --envs | grep "CONDA_ROOT/shell" $>/dev/null; then
+      printf "\n\e[0;35m Attempting to switch to shell environment \e[0m\n\n"
+      eval "$(conda shell.bash hook)"
+      conda activate shell
+  fi
+  
+  printf "\n\e[0;35m READING $BAM ... \e[0m\n\n"
+  
+  # filter 
+  bamtools filter -in $BAM -tag "NH:i:>1" > ${name}.multi.bam
+  printf "\n\e[0;32m  [✔] wrote ${name}.multi.bam\e[0m\n\n"
+
+  bamtools filter -in $BAM -tag "NH:i:1" > ${name}.unique.bam
+  printf "\n\e[0;32m  [✔] wrote ${name}.unique.bam\e[0m\n\n"
+  printf "\n\e[0;35m DONE \e[0m\n\n"
+}
