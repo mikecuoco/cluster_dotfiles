@@ -105,11 +105,22 @@ function filter_multi () {
   
   printf "\n\e[0;35m READING $BAM ... \e[0m\n\n"
   
-  # filter 
+  # save mulitmapping reads to file
   bamtools filter -in $BAM -tag "NH:i:>1" > ${name}.multi.bam
   printf "\n\e[0;32m  [✔] wrote ${name}.multi.bam\e[0m\n\n"
 
+  # save uniquely mapping reads to file
   bamtools filter -in $BAM -tag "NH:i:1" > ${name}.unique.bam
   printf "\n\e[0;32m  [✔] wrote ${name}.unique.bam\e[0m\n\n"
   printf "\n\e[0;35m DONE \e[0m\n\n"
+  
+  # TODO
+  # - add quality filter?
+  # - print size of outputs
+  
 }
+
+
+export -f get_rmsk
+export -f get_sra
+export -f filter_multi
