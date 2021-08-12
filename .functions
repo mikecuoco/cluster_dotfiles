@@ -104,6 +104,35 @@ function extract() {
 	fi
 }
 
+# Wait for MemAvailable to be bigger than a certain value.
+#
+# $1 - Value in kb that MemAvailable should be greater than.
+# $2 - (Optional, Default=60) Timeout in seconds
+#
+# Examples
+#
+#   wait_for_mem_available 10000000 120
+wait_for_mem_available() {
+  REQUESTED_MEMORY_KB=$1
+  TIMEOUT_DURATION=$((${2:-60}))
+  TIMEOUT_END=$((SECONDS+TIMEOUT_DURATION))
+
+  while true; do
+    mem_available=$(grep MemAvailable /proc/meminfo | awk '{ print $2 }')
+
+    if [ $SECONDS -gt $TIMEOUT_END ]; then
+      echo "Stopped waiting for $REQUESTED_MEMORY_KB kb MemAvailable after $SECONDS seconds (MemAvailable=$mem_available kb)"
+      break
+    fi
+
+    if [ "$mem_available" -gt "$REQUESTED_MEMORY_KB" ]; then
+      break
+    fi
+
+    sleep 1
+  done
+}
+
 # direct it all to /dev/null
 function nullify() {
   "$@" >/dev/null 2>&1
@@ -123,3 +152,5 @@ cond () {
 	fi
 	unset __conda_setup
 }
+
+export -f wait_for_mem_available
