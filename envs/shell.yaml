@@ -13,6 +13,7 @@ dependencies:
   - conda-forge::delta # pretty diffs
   - conda-forge::fzf # awesome file finder
   - conda-forge::the_silver_searcher # better grep (shortcut = ag)
+  - conda-forge::ripgrep # fastest grep (shortcut = rg)
   - conda-forge::rclone # cloud access
   - conda-forge::xsv # csv manipulation
   - conda-forge::cookiecutter # project templates
