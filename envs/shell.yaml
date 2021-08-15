@@ -24,3 +24,5 @@ dependencies:
   - bioconda::vcftools
   - bioconda::bcftools
   - bioconda::subread
+  - bioconda::snakemake>=6.7
+  - bioconda::nextflow>=21
