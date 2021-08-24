@@ -14,7 +14,7 @@ if ! command -v 'prefetch' &>/dev/null && \
     conda activate get-data
 fi
 
-DIR=$(pwd) # save base project dir
+DIR="$( cd "$( dirname "$1" )" && pwd )"
 ACC_FILE=$1
 
 mkdir -p raw_fastq # create dir for fastq files
