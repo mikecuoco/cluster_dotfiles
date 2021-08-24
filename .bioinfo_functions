@@ -97,7 +97,7 @@ function filter_multi () {
   if ! command -v 'bamtools' &>/dev/null && \
     command -v 'conda' && \
     [ "$CONDA_DEFAULT_ENV" != "shell" ] && \
-    conda info --envs | grep "$CONDA_ROOT/shell" $>/dev/null; then
+    conda info --envs | grep "$CONDA_PREFIX/envs/shell" $>/dev/null; then
       printf "\n\e[0;35m Attempting to switch to shell environment \e[0m\n\n"
       eval "$(conda shell.bash hook)"
       conda activate shell
