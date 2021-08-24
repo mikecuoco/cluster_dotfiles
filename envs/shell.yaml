@@ -27,3 +27,5 @@ dependencies:
   - bioconda::subread
   - bioconda::snakemake>=6.7
   - bioconda::nextflow>=21
+  - bioconda::nf-core
+  - bioconda::datamash # bash table operations
