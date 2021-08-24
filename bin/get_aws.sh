@@ -1,10 +1,19 @@
 #!usr/bin/env bash
-
-# enable conda
-source /iblm/netapp/data2/mcuoco/miniconda3/etc/profile.d/conda.sh
-conda activate get-data
+# Download from aws s3 bucket without sign-in request
+# Input = list of aws s3 paths
 
 set -e  
+
+# enable conda
+if ! command -v 'aws' &>/dev/null && \
+  command -v 'conda' && \
+  [ "$CONDA_DEFAULT_ENV" != "get-data" ] && \
+  conda info --envs | grep "CONDA_ROOT/get-data" $>/dev/null; then
+    printf "\n\e[0;35m Attempting to switch to get-data environment \e[0m\n\n"
+    eval "$(conda shell.bash hook)"
+    conda activate get-data
+fi
+
 while read line  
 do  
   FILE=$(basename $line)

@@ -1,41 +1,36 @@
-#!/bin/bash
-#$ -q iblm.q
-#$ -V
-#$ -cwd
-#$ -j y
-#$ -l mem_free=1G
-#$ -t 1-22497
-#$ -tc 24
-#$ -e log
-#$ -o log
-# 
-# Usage:
-#   $1 = file containing SRA ids
+#!usr/bin/env bash
+# Download SRA files from list
+# Input = list of SRA accessions
+
+set -e  
 
 # enable conda
-source /iblm/netapp/data2/mcuoco/miniconda3/etc/profile.d/conda.sh
-conda activate get-data
+if ! command -v 'prefetch' &>/dev/null && \
+  command -v 'conda' && \
+  [ "$CONDA_DEFAULT_ENV" != "get-data" ] && \
+  conda info --envs | grep "CONDA_ROOT/get-data" $>/dev/null; then
+    printf "\n\e[0;35m Attempting to switch to get-data environment \e[0m\n\n"
+    eval "$(conda shell.bash hook)"
+    conda activate get-data
+fi
 
 DIR=$(pwd) # save base project dir
 ACC_FILE=$1
-ACC=`sed -n ${SGE_TASK_ID}p $ACC_FILE | awk '{print $1}'`
 
 mkdir -p raw_fastq # create dir for fastq files
 
 cd raw_fastq
 
-if [ ! -f "${ACC}_1.fastq.gz" ]
-then
-prefetch $ACC
-vdb-validate $ACC
-fasterq-dump --split-files $ACC # get fastq files from acess
-rm -r $ACC
-gzip $ACC*fastq # compress
+while read -r ACC
+do
+	if [ ! -f "${ACC}_1.fastq.gz" ]
+	then
+	prefetch $ACC && \  # prefetch to improve speed and validate
+	vdb-validate $ACC && \  # validate
+	fasterq-dump --split-files $ACC && \  # get fastq files from accession
+	rm -r $ACC
+	gzip $ACC*fastq # compress
 
-echo "downloaded $ACC succesfully"
-
-# run fastqc
-conda activate fastqc
-
-fastqc $ACC*fastq.gz
-fi
+	echo "downloaded $ACC succesfully"
+	fi
+done < $ACC_FILE
