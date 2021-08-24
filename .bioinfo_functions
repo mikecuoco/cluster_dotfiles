@@ -87,11 +87,9 @@ function get_sra () {
 
 }
 
+
+# separate uniquely mapping and multimapping reads from a bam file
 function filter_multi () {
-  
-  # assign input
-  BAM=$1
-  name=${BAM%".bam"}
 
   # activate conda environment
   if ! command -v 'bamtools' &>/dev/null && \
@@ -103,20 +101,50 @@ function filter_multi () {
       conda activate shell
   fi
   
-  printf "\n\e[0;35mREADING $BAM ... \e[0m\n\n"
-  
-  # save mulitmapping reads to file
-  bamtools filter -in $BAM -tag "NH:>1" > ${name}.multi.bam
-  printf "\n\e[0;32m[✔] wrote ${name}.multi.bam\e[0m\n\n"
-
-  # save uniquely mapping reads to file
-  bamtools filter -in $BAM -tag "NH:1" > ${name}.unique.bam
-  printf "\n\e[0;32m[✔] wrote ${name}.unique.bam\e[0m\n\n"
-  printf "\n\e[0;35mDONE \e[0m\n\n"
+  arr="$1"
+  for BAM_FILE in "${arr[@]}";
+    do
+      name=${BAM_FILE%".bam"}
+      
+      # wait for memory
+      MEM=$(expr $(du -b $BAM_FILE | awk '{print $1}') / 1000)
+      wait_for_mem_available $MEM 600
+      
+      # create temp files for read storage
+      mkdir -p tmp
+      SAM_FILE=$(mktemp tmp/XXXX.sam)
+      READ_FILE=$(mktemp tmp/XXXX.reads.txt)
+      UNIQ_READ_FILE=$(mktemp tmp/XXXX.uniq.txt)
+      MULTI_READ_FILE=$(mktemp tmp/XXXX.multi.txt)
+      
+      printf "\n\e[0;35mProcessing mapped reads from $BAM_FILE ... \e[0m\n\n"
+      samtools view $BAM_FILE > $SAM_FILE
+      awk '{print $1}' $SAM_FILE | sort | uniq -c | awk '$1>1 {print $2}' > $MULTI_READ_FILE
+      
+      # save uniquely mapping reads to new file
+      samtools view -H $BAM_FILE > ${name}.uniq.sam
+      grep -vFf $MULTI_READ_FILE $SAM_FILE >> ${name}.uniq.sam
+      samtools view -b ${name}.uniq.sam > ${name}.uniq.bam
+      rm -f ${name}.uniq.sam
+      printf "\n\e[0;32m[✔] wrote $(expr $(wc -l < $READ_FILE) - $(wc -l < $MULTI_READ_FILE)) reads to ${name}.uniq.bam\e[0m\n\n"
+      
+      # save multi-mapping reads to new file
+      samtools view -H $BAM_FILE > ${name}.multi.sam
+      grep -Ff $MULTI_READ_FILE $SAM_FILE >> ${name}.multi.sam
+      samtools view -b ${name}.multi.sam > ${name}.multi.bam
+      rm -f ${name}.multi.sam
+      printf "\n\e[0;32m[✔] wrote $(wc -l $MULTI_READ_FILE) reads to ${name}.multi.bam\e[0m\n\n"
+      
+      #remove temp files
+      printf "\n\e[0;35mRemoving temp files... \e[0m\n\n"
+      rm -f $SAM_FILE $MULTI_READ_FILE 
+    
+      printf "\n\e[0;32m[✔] $BAM_FILE \e[0m\n\n"
+      echo "$i"
+    done
   
   # TODO
   # - add quality filter?
-  # - print size of outputs
   
 }
 
