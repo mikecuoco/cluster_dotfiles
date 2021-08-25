@@ -64,26 +64,37 @@ function get_sra () {
   # create output directory
   mkdir -p raw_fastq && cd raw_fastq
 
+  # setup numeric variables
+  COUNTER=0
+  TOTAL=$(wc -l ../$ACC_FILE | awk '{print $1}')
+
   while read -r ACC;
   do
-    # print in purple
-    printf "\n\e[0;35m Downloading and unpacking $ACC ... \e[0m\n\n"
+    # increase counter
+    let COUNTER=COUNTER+1 
 
-    # use command group to store exit code  
-    { prefetch $ACC && vdb-validate $ACC && fasterq-dump $ACC --split-files -f -e $THREADS && gzip $ACC*fastq && rm -rf $ACC; }
-
-    if [ $? -eq 0 ]
+    # check for existance of file
+    if [ ! -f "${ACC}*.fastq.gz" ]
     then
-      # print message in green
-      printf "\n\e[0;32m  [✔] $ACC downloading and unpacking succeeded \e[0m\n"
+            # print in purple
+      printf "\n\e[0;35mDownloading and unpacking $ACC ... [$COUNTER/$TOTAL] \e[0m"
+
+      # use command group to store exit code  
+      { prefetch -p $ACC && vdb-validate $ACC && fasterq-dump $ACC --split-files -f -e $THREADS -p && gzip $ACC*fastq && rm -rf $ACC; }
+
+      if [ $? -eq 0 ]
+      then
+        # print message in green
+        printf "\e[0;32m[✔] $ACC downloading and unpacking succeeded [$COUNTER/$TOTAL] \e[0m\n"
+      else
+        # print message in red
+        printf "\e[0;31m[✖] $ACC downloading and unpacking failed \e[0m\n"
+        echo "$ACC" >> ../failed_acc.txt
+      fi
     else
-      # print message in red
-      printf "\n\e[0;31m  [✖] $ACC downloading and unpacking failed \e[0m\n"
-      echo "$ACC" >> ../failed_acc.txt
+       printf "\n\e[0;35mSkipping $ACC since the file exists... \e[0m"
     fi
-
   done < ../$ACC_FILE
-
 
 }
 
