@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 # Download SRA files from list
 # Input = list of SRA accessions
 
@@ -8,7 +8,7 @@ set -e
 if ! command -v 'prefetch' &>/dev/null && \
   command -v 'conda' && \
   [ "$CONDA_DEFAULT_ENV" != "get-data" ] && \
-  conda info --envs | grep "$CONDA_PREFIX/envs/get-data" $>/dev/null; then
+  conda info --envs | grep "$CONDA_PREFIX_1/envs/get-data" $>/dev/null; then
     printf "\n\e[0;35m Attempting to switch to get-data environment \e[0m\n\n"
     eval "$(conda shell.bash hook)"
     conda activate get-data
