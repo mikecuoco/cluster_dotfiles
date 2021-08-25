@@ -74,8 +74,10 @@ function get_sra () {
     let COUNTER=COUNTER+1 
 
     # check for existance of file
-    if [ ! -f "${ACC}*.fastq.gz" ]
-    then
+    if ls ${ACC}*.fastq.gz 1> /dev/null 2>&1;
+    then 
+       printf "\n\e[0;35mSkipping $ACC since the $(ls ${ACC}*.fastq.gz) exists... \e[0m"
+    else
             # print in purple
       printf "\n\e[0;35mDownloading and unpacking $ACC ... [$COUNTER/$TOTAL] \e[0m"
 
@@ -91,8 +93,6 @@ function get_sra () {
         printf "\e[0;31m[✖] $ACC downloading and unpacking failed \e[0m\n"
         echo "$ACC" >> ../failed_acc.txt
       fi
-    else
-       printf "\n\e[0;35mSkipping $ACC since the file exists... \e[0m"
     fi
   done < ../$ACC_FILE
 
