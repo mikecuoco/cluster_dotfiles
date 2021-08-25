@@ -76,7 +76,7 @@ function get_sra () {
     # check for existance of file
     if ls ${ACC}*.fastq.gz 1> /dev/null 2>&1;
     then 
-       printf "\n\e[0;35mSkipping $ACC since the $(ls ${ACC}*.fastq.gz) exists... \e[0m"
+       printf "Skipping $ACC since $(ls ${ACC}*.fastq.gz) exists...\n"
     else
             # print in purple
       printf "\n\e[0;35mDownloading and unpacking $ACC ... [$COUNTER/$TOTAL] \e[0m"
