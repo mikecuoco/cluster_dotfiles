@@ -29,3 +29,8 @@ dependencies:
   - bioconda::nextflow>=21
   - bioconda::nf-core
   - bioconda::datamash # bash table operations
+  - bioconda::isoseq3
+  - bioconda::pbmm2
+  - bioconda::fastqc
+  - bioconda::multiqc
+  - bioconda::genomepy
