@@ -1,0 +1,5 @@
+name: mm2
+dependencies:
+  - bioconda::minimap2>=2.22
+  - bioconda::samtools>=1.13
+  - bioconda::bedtools>=2.30.0

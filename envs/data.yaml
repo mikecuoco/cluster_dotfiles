@@ -1,8 +1,4 @@
-nane: get-data
-channels:
-  - bioconda
-  - conda-forge
-  - defaults
+name: data
 dependencies:
   - conda-forge::bdbag
   - conda-forge::awscli
@@ -10,8 +6,7 @@ dependencies:
   - bioconda::sra-tools
   - bioconda::entrez-direct
   - hcc::aspera-cli
-  - conda-forge::gdrive
+  - conda-forge::rclone # cloud access
   - bioconda::enabrowsertools
-  - bioconda::samtools
-  - bioconda::bcftools
-  - bioconda::genomepy
+  - bioconda::samtools>=1.13
+  - bioconda::bedtools>=2.30.0

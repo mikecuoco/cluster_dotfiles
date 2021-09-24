@@ -2,3 +2,6 @@ name: jupyter
 dependencies:
   - conda-forge::jupyterlab
   - conda-forge::nb_conda_kernels
+  - conda-forge::jupyter-lsp
+  - conda-forge::jupyter-lsp-r
+  - conda-forge::jupyter-lsp-python

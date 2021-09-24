@@ -2,6 +2,7 @@
 # see the end of .bash_profile for the setup of this
 name: shell
 dependencies:
+# essentials: move to base?
   - conda-forge::vim # editor 
   - conda-forge::socat # for proxies
   - conda-forge::exa # better ls
@@ -19,18 +20,27 @@ dependencies:
   - conda-forge::cookiecutter # project templates
   - conda-forge::pandoc # doc conversion
   - conda-forge::parallel # GNU parallel
-  - bioconda::samtools 
+  - bioconda::rename # batch renaming
+  - bioconda::datamash # bash table operations
+# jupyter
+  - conda-forge::ipykernel
+  - conda-forge::r-irkernel
+# bioinformatics:
+  - bioconda::seqkit # fastq/a operations
+  - bioconda::samtools>=1.13 # very important to have latest version!
   - bioconda::bamtools
-  - bioconda::bedtools
+  - bioconda::bedtools>=2.30.0
+  - bioconda::bedops
+  - bioconda::ucsc-bigbedtobed
+  - bioconda::ucsc-bigBedSummary
+  - bioconda::ucsc-bigbedinfo
+  - bioconda::ucsc-bedtobigbed
+  - bioconda::gffutils
+  - bioconda::gffread
+  - bioconda::subread
   - bioconda::vcftools
   - bioconda::bcftools
-  - bioconda::subread
+# pipeline tools
   - bioconda::snakemake>=6.7
   - bioconda::nextflow>=21
   - bioconda::nf-core
-  - bioconda::datamash # bash table operations
-  - bioconda::isoseq3
-  - bioconda::pbmm2
-  - bioconda::fastqc
-  - bioconda::multiqc
-  - bioconda::genomepy

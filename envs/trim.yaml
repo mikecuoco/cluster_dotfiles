@@ -1,0 +1,4 @@
+name: trim
+dependencies:
+  - bioconda::cutadapt
+  - bioconda::trimmomatic
