@@ -2,7 +2,7 @@
 # Load our dotfiles like ~/.bash_prompt, etc…
 #   ~/.extra can be used for settings you don’t want to commit,
 #   Use it to configure your PATH, thus it being first in line.
-for file in ~/.{extra,bash_prompt,exports,aliases,functions,bioinfo_functions}; do
+for file in ~/.{extra,bash_prompt,exports,aliases,functions}; do
     [ -r "$file" ] && source "$file"
 done
 unset file
@@ -106,12 +106,6 @@ else
     if ! command -v mamba &> /dev/null; then
         echo  "installing mamba..."
         conda install mamba -n base -c conda-forge -y
-    fi
-    # check if shell environment is present
-    conda activate shell
-    if [ $? -eq 1 ]; then
-        echo "installing shell environment..."
-        mamba env create -f ~/code/cluster_dotfiles/.env.yaml
     fi
     conda activate shell
 fi
