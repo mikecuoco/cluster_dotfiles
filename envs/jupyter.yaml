@@ -5,3 +5,9 @@ dependencies:
   - conda-forge::jupyter-lsp
   - conda-forge::jupyter-lsp-r
   - conda-forge::jupyter-lsp-python
+  - conda-forge::ipywidgets
+  - conda-forge::jupyterlab-git
+  - conda-forge::jupyter-server-proxy
+  - conda-forge::jupyterlab-latex
+  - conda-forge::jupyterlab-pullrequests
+  - conda-forge::nbdime

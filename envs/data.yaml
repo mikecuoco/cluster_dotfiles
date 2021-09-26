@@ -1,5 +1,6 @@
 name: data
 dependencies:
+  - anaconda::python=3.9
   - conda-forge::bdbag
   - conda-forge::awscli
   - conda-forge::gsutil
@@ -7,6 +8,7 @@ dependencies:
   - bioconda::entrez-direct
   - hcc::aspera-cli
   - conda-forge::rclone # cloud access
-  - bioconda::enabrowsertools
+  - bioconda::enabrowsertools>=1.5.4
   - bioconda::samtools>=1.13
   - bioconda::bedtools>=2.30.0
+  - anaconda::wget>=1.20.1

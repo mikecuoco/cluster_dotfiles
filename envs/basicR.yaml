@@ -1,5 +1,7 @@
 name: basicR
 dependencies:
-  - conda-forge::r-base
-  - conda-forge::r-essentials
+  - conda-forge::r-base>=4.1
+  - conda-forge::r-essentials>=4.1
+  - conda-forge::r-vroom>=1.5.5
+  - conda-forge::r-ggstatsplot
   - r::r-irkernel # for jupyter support
