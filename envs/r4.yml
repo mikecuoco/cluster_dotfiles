@@ -1,0 +1,15 @@
+name: r4
+channels:
+  - bioconda
+  - biocore
+  - r
+  - conda-forge
+  - defaults
+dependencies:
+  - conda-forge::r-base>=4.1
+  - conda-forge::r-essentials>=4.1
+  - conda-forge::r-vroom
+  - conda-forge::r-ggstatsplot
+  - conda-forge::r-janitor
+  - conda-forge::r-patchwork
+  - r::r-irkernel

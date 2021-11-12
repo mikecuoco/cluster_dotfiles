@@ -1,0 +1,24 @@
+name: DESeq
+channels:
+  - bioconda
+  - biocore
+  - r
+  - conda-forge
+  - defaults
+dependencies:
+  - conda-forge::r-base>=4.1
+  - conda-forge::r-essentials>=4.1
+  - conda-forge::r-vroom
+  - conda-forge::r-ggstatsplot
+  - bioconda::bioconductor-deseq2
+  - bioconda::bioconductor-edger
+  - bioconda::bioconductor-apeglm
+  - bioconda::bioconductor-enhancedvolcano
+  - bioconda::bioconductor-complexheatmap
+  - bioconda::bioconductor-topgo
+  - bioconda::bioconductor-keggrest
+  - bioconda::bioconductor-fgsea
+  - bioconda::bioconductor-dorothea
+  - conda-forge::r-janitor
+  - conda-forge::r-patchwork
+  - r::r-irkernel

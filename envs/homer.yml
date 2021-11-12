@@ -1,0 +1,12 @@
+name: homer
+channels:
+  - bioconda
+  - conda-forge
+  - r
+  - defaults
+dependencies:
+  - bioconda::homer>=4.11
+  - r::r-irkernel
+  - python>=3.8
+  - conda-forge::r-base>=4.1
+  - conda-forge::r-essentials

@@ -1,0 +1,4 @@
+name: vscode
+dependencies:
+  - conda-forge::code-server
+  - conda-forge::r-languageserver

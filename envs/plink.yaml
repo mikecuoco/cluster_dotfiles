@@ -1,0 +1,6 @@
+name: plink
+dependencies:
+  - conda-forge::r-base>=4.1
+  - conda-forge::r-essentials
+  - bioconda::plink
+  - r::r-irkernel # for jupyter support

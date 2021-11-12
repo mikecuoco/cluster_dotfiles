@@ -3,6 +3,8 @@
 name: shell
 dependencies:
 # essentials: move to base?
+  - conda-forge::gcc_linux-64 # compiler
+  - conda-forge::go # go language
   - conda-forge::vim # editor 
   - conda-forge::socat # for proxies
   - conda-forge::exa # better ls
@@ -20,6 +22,9 @@ dependencies:
   - conda-forge::cookiecutter # project templates
   - conda-forge::pandoc # doc conversion
   - conda-forge::parallel # GNU parallel
+  - conda-forge::pigz # parallel gzip
+  - conda-forge::hyperfine # awesome benchmarking
+  - conda-forge::ncdu # disk usage
   - bioconda::rename # batch renaming
   - bioconda::datamash # bash table operations
 # jupyter
@@ -41,6 +46,6 @@ dependencies:
   - bioconda::vcftools
   - bioconda::bcftools
 # pipeline tools
-  - bioconda::snakemake>=6.7
+  - bioconda::snakemake>=6.8.1
   - bioconda::nextflow>=21
   - bioconda::nf-core
