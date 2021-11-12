@@ -3,7 +3,6 @@
 * I maintain this repo as *my* dotfiles, forked from the amazing Paul Irish
 * All bash awesomeness is from Paul
 * I removed all macOS-centric stuff from Paul's setup
-* I added favorite tools to .``env.yaml``
 
 ## overview of files
 
@@ -19,7 +18,7 @@
 * `.exports`
 * `.functions`
 * `.extra` - not included, explained below
-*  `.env.yaml` - psuedobase conda env with all my favorite shell tools
+*  `envs/` - auto-updated conda envs 
 
 #### manual run
 * `symlink-setup.sh`  - sets up symlinks for all dotfiles and vim config.
@@ -36,15 +35,8 @@ There will be items that don't belong to be committed to a git repo, because eit
 
 `touch ~/.extra && $EDITOR $_`
 
-I have some EXPORTS, my PATH construction, and a few aliases for ssh'ing into my servers in there.
-
-
 ## TO-DOs
 
- - [ ] add all my conda yamls
-     - [ ] get-data.yaml
-     - [ ] snakemake.yaml
-     - [ ] add auto-updates to those envs
  - [ ] fix `tmux.conf`
  - [ ] add `.curlrc`
  - [ ] setup or remove cron
