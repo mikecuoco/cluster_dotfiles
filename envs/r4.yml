@@ -12,4 +12,12 @@ dependencies:
   - conda-forge::r-ggstatsplot
   - conda-forge::r-janitor
   - conda-forge::r-patchwork
+  - anaconda::r-languageserver
+  - conda-forge::radian
+  - conda-forge::r-biocmanager
+  - bioconda::bioconductor-do.db
+  - bioconda::bioconductor-org.hs.eg.db
+  - bioconda::bioconductor-clusterprofiler
+  - bioconda::bioconductor-chipseeker
   - r::r-irkernel
+  

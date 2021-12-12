@@ -4,6 +4,7 @@ name: shell
 dependencies:
 # essentials: move to base?
   - conda-forge::gcc_linux-64 # compiler
+  - conda-forge::tar
   - conda-forge::go # go language
   - conda-forge::vim # editor 
   - conda-forge::socat # for proxies
@@ -49,3 +50,11 @@ dependencies:
   - bioconda::snakemake>=6.8.1
   - bioconda::nextflow>=21
   - bioconda::nf-core
+# qc tools
+  - bioconda::fastqc
+  - bioconda::multiqc
+  - bioconda::rna-seqc
+  - conda-forge::bx-python
+# trimming
+  - bioconda::cutadapt
+  - bioconda::trimmomatic

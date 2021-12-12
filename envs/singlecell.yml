@@ -1,4 +1,4 @@
-name: Single-cell
+name: singlecell
 channels:
   - bioconda
   - biocore
@@ -7,12 +7,11 @@ channels:
   - defaults
 dependencies:
   - conda-forge::r-base>=4.1
-  - conda-forge::r-essentials>=4.1
+  - conda-forge::r-essentials
   - conda-forge::r-vroom
   - conda-forge::r-ggstatsplot
   - conda-forge::r-seurat>=4.0.0
   - conda-forge::umap-learn
   - conda-forge::leidenalg
-  - conda-forge::r-uwot
   - bioconda::velocyto.py
   - r::r-irkernel

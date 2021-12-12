@@ -1,6 +1,7 @@
 name: jupyter
 dependencies:
   - conda-forge::jupyterlab
+  - conda-forge::git>=2
   - conda-forge::nb_conda_kernels
   - conda-forge::jupyter-lsp
   - conda-forge::jupyter-lsp-r

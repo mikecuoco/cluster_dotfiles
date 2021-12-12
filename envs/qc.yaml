@@ -1,6 +1,0 @@
-name: qc
-dependencies:
-  - bioconda::fastqc
-  - bioconda::multiqc
-  - bioconda::rna-seqc
-  - conda-forge::bx-python

@@ -1,0 +1,9 @@
+name: demuxlet
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+dependencies:
+  - bioconda::popscle
+  - bioconda::eagle
+  - bioconda::crossmap
