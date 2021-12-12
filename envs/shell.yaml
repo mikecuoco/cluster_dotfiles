@@ -25,6 +25,8 @@ dependencies:
 # jupyter
   - conda-forge::ipykernel
   - conda-forge::r-irkernel
+  - r::rpy2
+  - r::r-essentials
 # bioinformatics:
   - bioconda::seqkit # fastq/a operations
   - bioconda::samtools>=1.13 # very important to have latest version!
