@@ -13,10 +13,6 @@ export LANG="en_US"
 command -v gdircolors >/dev/null 2>&1 || alias gdircolors="dircolors"
 eval "$(gdircolors -b ~/.dircolors)"
 
-# export packages to PATH
-#PATH=$PATH:~/code/bin
-#PATH=$PATH:~/code/git-fuzzy/bin
-
 # Aliases
 alias python=python3
 
