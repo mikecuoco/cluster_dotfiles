@@ -25,6 +25,7 @@ dependencies:
 # jupyter
   - conda-forge::ipykernel
   - conda-forge::r-irkernel
+  - conda-forge::nb_conda_kernels
   - r::rpy2
   - r::r-essentials
 # bioinformatics:
@@ -42,6 +43,8 @@ dependencies:
   - bioconda::subread
   - bioconda::vcftools
   - bioconda::bcftools
+  - conda-forge::biopython
+  - bioconda::refgeniex
 # pipeline tools
   - bioconda::snakemake>=6.7
   - bioconda::nextflow>=21
