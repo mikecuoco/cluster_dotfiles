@@ -20,6 +20,7 @@ dependencies:
   - conda-forge::cookiecutter # project templates
   - conda-forge::pandoc # doc conversion
   - conda-forge::parallel # GNU parallel
+  - conda-forge::jq # JSON processing
   - bioconda::rename # batch renaming
   - bioconda::datamash # bash table operations
 # jupyter
