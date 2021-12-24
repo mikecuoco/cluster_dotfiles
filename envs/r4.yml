@@ -6,18 +6,17 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - conda-forge::radian
   - conda-forge::r-base>=4.1
   - conda-forge::r-essentials>=4.1
+  - conda-forge::r-biocmanager
+  - anaconda::r-languageserver
   - conda-forge::r-vroom
   - conda-forge::r-ggstatsplot
   - conda-forge::r-janitor
   - conda-forge::r-patchwork
-  - anaconda::r-languageserver
-  - conda-forge::radian
-  - conda-forge::r-biocmanager
   - bioconda::bioconductor-do.db
   - bioconda::bioconductor-org.hs.eg.db
   - bioconda::bioconductor-clusterprofiler
   - bioconda::bioconductor-chipseeker
-  - r::r-irkernel
   

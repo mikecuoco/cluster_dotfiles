@@ -6,19 +6,21 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - conda-forge::radian
   - conda-forge::r-base>=4.1
   - conda-forge::r-essentials>=4.1
   - conda-forge::r-vroom
   - conda-forge::r-ggstatsplot
+  - conda-forge::r-glue
+  - conda-forge::r-patchwork
+  - anaconda::r-languageserver
+  - conda-forge::r-biocmanager
   - bioconda::bioconductor-deseq2
   - bioconda::bioconductor-edger
   - bioconda::bioconductor-apeglm
   - bioconda::bioconductor-enhancedvolcano
   - bioconda::bioconductor-complexheatmap
-  - bioconda::bioconductor-topgo
-  - bioconda::bioconductor-keggrest
+  - bioconda::bioconductor-clusterprofiler
   - bioconda::bioconductor-fgsea
   - bioconda::bioconductor-dorothea
   - conda-forge::r-janitor
-  - conda-forge::r-patchwork
-  - r::r-irkernel
