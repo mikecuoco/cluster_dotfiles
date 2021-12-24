@@ -125,4 +125,4 @@ if [[ "${reslog}" != "" ]] ; then
     git pull
 fi
 
-cd ~
+cd -
