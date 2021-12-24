@@ -26,11 +26,15 @@ dependencies:
   - conda-forge::pigz # parallel gzip
   - conda-forge::hyperfine # awesome benchmarking
   - conda-forge::ncdu # disk usage
+  - conda-forge::jq # JSON processing
   - bioconda::rename # batch renaming
   - bioconda::datamash # bash table operations
 # jupyter
   - conda-forge::ipykernel
   - conda-forge::r-irkernel
+  - conda-forge::nb_conda_kernels
+  - r::rpy2
+  - r::r-essentials
 # bioinformatics:
   - bioconda::seqkit # fastq/a operations
   - bioconda::samtools>=1.13 # very important to have latest version!
@@ -46,6 +50,8 @@ dependencies:
   - bioconda::subread
   - bioconda::vcftools
   - bioconda::bcftools
+  - conda-forge::biopython
+  - bioconda::refgeniex
 # pipeline tools
   - bioconda::snakemake>=6.8.1
   - bioconda::nextflow>=21
