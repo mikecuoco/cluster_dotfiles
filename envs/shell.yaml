@@ -52,6 +52,7 @@ dependencies:
   - bioconda::bcftools
   - conda-forge::biopython
   - bioconda::refgeniex
+  - bioconda::fastq_utils
 # pipeline tools
   - bioconda::snakemake>=6.8.1
   - bioconda::nextflow>=21
@@ -64,3 +65,4 @@ dependencies:
 # trimming
   - bioconda::cutadapt
   - bioconda::trimmomatic
+  - bioconda::trim-galore
