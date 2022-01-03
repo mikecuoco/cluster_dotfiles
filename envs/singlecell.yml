@@ -8,11 +8,11 @@ channels:
 dependencies:
   - conda-forge::r-base>=4.1.2
   - conda-forge::r-essentials
-  - conda-forge::radian
   - conda-forge::r-glue
-  - conda-forge::r-biocmanager
-  - anaconda::r-languageserver
   - conda-forge::r-vroom
+  - conda-forge::radian # for VScode
+  - anaconda::r-languageserver # for VScode
+  - conda-forge::r-biocmanager
   - conda-forge::r-ggstatsplot
   - conda-forge::r-seurat>=4.0.0
   - conda-forge::umap-learn
@@ -20,3 +20,8 @@ dependencies:
   - bioconda::velocyto.py
   - bioconda::bioconductor-dittoseq
   - bioconda::bioconductor-clusterprofiler
+  - bioconda::scanpy
+  - bioconda::anndata
+  - bioconda::scipy
+  - bioconda::r-sceasy
+  - conda-forge::loompy
