@@ -1,0 +1,11 @@
+name: REdiscoverTE
+channels:
+  - bioconda
+  - biocore
+  - r
+  - conda-forge
+  - defaults
+dependencies:
+  - conda-forge::r-base==3.4.3
+  - conda-forge::r-essentials
+  - bioconda::salmon==0.8.2
