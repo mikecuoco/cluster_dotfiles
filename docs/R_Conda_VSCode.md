@@ -43,3 +43,9 @@ source(file.path(Sys.getenv(if (.Platform$OS.type == "windows") "USERPROFILE" el
         "r.rterm.linux": "path/to/conda_env/bin/radian",
     }
     ```
+
+# Appendix
+
+## Turn off annoying linting
+
+In VSCode settings, deselect "Enable diagnositics" under *Lsp: Diagnostics*
