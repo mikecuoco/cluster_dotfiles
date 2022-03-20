@@ -5,3 +5,4 @@ dependencies:
   - bioconda::samtools
   - bioconda::bcftools
   - bioconda::beagle
+  - conda-forge::libgd
