@@ -1,26 +1,31 @@
-# Using R in VSCode (plus Conda compatibility)
+# Using R in VSCode (compatible with Remote and Conda work)
 
-## Initial setup
+## 1. Install extensions
 
-1. Install R Extension for Visual Studio Code by Yuki Ueda (ikuyadeu.r)
-2. Install the R Debugger for VS Code extension (rdebugger.r-debugger)
-3. Add the following line to `.Rprofile`. This will automatically attach the R session to vscode.
+1. "R Extension for Visual Studio Code" by Yuki Ueda (extension ID: ikuyadeu.r)
+2. "Remote - SSH" by Microsoft (extension ID: ms-vscode-remote.remote-ssh)
 
-    ```r
-    source(file.path(Sys.getenv(if (.Platform$OS.type == "windows") "USERPROFILE" else "HOME"), ".vscode-R", "init.R"))
-    ```
+## 2. Attaching R sessions to VSCode
+
+Add the following line to `~/.Rprofile` on each system you use (i.e. local and remote). Now, whenever R is started, it will attach to vscode.
+
+```r
+source(file.path(Sys.getenv(if (.Platform$OS.type == "windows") "USERPROFILE" else "HOME"), ".vscode-R", "init.R"))
+```
 
 ## For each conda environment
 
-*NOTE: Like most things, I'm unsure if this is OK to do in the base env*
+1. Install [radian](https://github.com/randy3k/radian) and [r-languageserver](https://github.com/REditorSupport/languageserver) in your conda environment. Radian is an alternative R console with nice tab-completion and syntax highlighting, making for a more pleasant development environment. r-language server offers tab-completion and more in the editor.
 
-1. Install radian and languageserver in conda environment.
+    *NOTE: radian is written in Python, so don't install in base conda environment! Otherwise you will have conflicts when trying to create environments with alternate Python versions*
+
+    I use [mamba](https://github.com/mamba-org/mamba), a reimplementation of conda in C++ (and is much faster)
 
     ```bash
     mamba install radian r-languageserver
     ```
 
-    I just add them to the yaml file, along with my other favorites
+    I just add them to the yaml file, along with my other favorites.
 
     ```yaml
     - conda-forge::radian
@@ -30,13 +35,17 @@
     - conda-forge::r-biocmanager
     ```
 
-2. For intellisense to work properly for all packages in conda env, we must specify the environment-specific binaries for python, R, and radian. We can do this easily by adding the following to `.vscode/settings.json`. This can be set globally in `~/.vscode/settings.json` or by workspace in `dir/.vscode/settings.json`
+2. For intellisense to work properly for all packages in conda env, you must specify the environment-specific binaries for R and radian. You can do this easily by adding the following to `.vscode/settings.json`. This can be set globally in `~/.vscode/settings.json` or by workspace in `{workspace_dir}/.vscode/settings.json`. Since I use project-specific conda environments, I like doing it by workspace. Add other languages here if you plan to develop in those too.
 
     ```json
     {
-        "python.pythonPath": "path/to/env/bin/python",
-        "r.rpath.linux": "path/to/env/bin/R",
-        "r.rterm.linux": "path/to/env/bin/radian",
-        "python.linting.enabled": false
+        "r.rpath.linux": "path/to/conda_env/bin/R",
+        "r.rterm.linux": "path/to/conda_env/bin/radian",
     }
     ```
+
+# Appendix
+
+## Turn off annoying linting
+
+In VSCode settings, deselect "Enable diagnositics" under *Lsp: Diagnostics*
