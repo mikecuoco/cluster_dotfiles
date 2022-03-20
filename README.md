@@ -42,4 +42,3 @@ There will be items that don't belong to be committed to a git repo, because eit
  - [ ] setup or remove cron
  - [ ] setup `.gemrc`?
  - [ ] install my custom `bin` (not on github yet as of 06/20/2021) 
- - [ ] add `.Rprofile`
