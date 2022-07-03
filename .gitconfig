@@ -129,8 +129,10 @@
 	showPatch = true
 [log]
 	date = relative
+[credential]
+	helper = cache
+[init]
+	defaultBranch = main
 [user]
 	name = mikecuoco
 	email = mcuoco@ucsd.edu
-[credential]
-	helper = cache
