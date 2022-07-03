@@ -1,0 +1,8 @@
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+channel_priority: flexible
+auto_update_conda: true
+show_channel_urls: true
+auto_activate_base: true
