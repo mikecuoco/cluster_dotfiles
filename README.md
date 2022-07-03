@@ -7,7 +7,7 @@
 ## overview of files
 
 ####  Automatic config
-* `.vimrc`, `.vim` - vim config, obv.
+* `.vimrc`, `.vim` - vim config
 * `.inputrc` - behavior of the actual prompt line
 
 #### shell environment
@@ -17,8 +17,7 @@
 * `.bashrc`
 * `.exports`
 * `.functions`
-* `.extra` - not included, explained below
-*  `envs/` - auto-updated conda envs 
+* `.extra` - git ignored, explained below
 
 #### manual run
 * `symlink-setup.sh`  - sets up symlinks for all dotfiles and vim config.
@@ -37,8 +36,5 @@ There will be items that don't belong to be committed to a git repo, because eit
 
 ## TO-DOs
 
- - [ ] fix `tmux.conf`
- - [ ] add `.curlrc`
- - [ ] setup or remove cron
- - [ ] setup `.gemrc`?
- - [ ] install my custom `bin` (not on github yet as of 06/20/2021) 
+- [ ] fix `tmux.conf`
+- [ ] setup or remove cron
