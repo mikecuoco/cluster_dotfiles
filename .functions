@@ -5,10 +5,26 @@ function md() {
 	mkdir -p "$@" && cd "$@"
 }
 
-
 # find shorthand
 function f() {
 	find . -name "$1" 2>&1 | grep -v 'Permission denied'
+}
+
+# _remove $1 from PATH
+function _path_del() {
+    local _l=":$PATH:"
+    while [[ $_l =~ :$1: ]]; do
+          _l=${_l//:$1:/:}
+    done
+    _l=${_l%:}
+    _l=${_l#:}
+    PATH="$_l"
+}
+
+# _prepend : prepend $1 to PATH.
+function _path_prepend() {
+    _path_del "$1"
+    PATH="$1:$PATH"
 }
 
 # List all files, long format, colorized, permissions in octal
@@ -133,24 +149,14 @@ wait_for_mem_available() {
   done
 }
 
+# Reverse complement a string
+function rc() {
+	echo $1 | tr ACGTacgt TGCAtgca | rev
+}
+
 # direct it all to /dev/null
 function nullify() {
   "$@" >/dev/null 2>&1
-}
-
-# initialize conda
-cond () {
-	__conda_setup="$('/opt/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-	if [ $? -eq 0 ]; then
-	    eval "$__conda_setup"
-	else
-	    if [ -f "/opt/miniconda3/etc/profile.d/conda.sh" ]; then
-	        . "/opt/miniconda3/etc/profile.d/conda.sh"
-	    else
-	        export PATH="/opt/miniconda3/bin:$PATH"
-	    fi
-	fi
-	unset __conda_setup
 }
 
 export -f wait_for_mem_available
