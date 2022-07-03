@@ -1,5 +1,0 @@
-name: star
-dependencies:
-  - bioconda::star>=2.7.9a
-  - bioconda::samtools>=1.13
-  - bioconda::bedtools>=2.30.0

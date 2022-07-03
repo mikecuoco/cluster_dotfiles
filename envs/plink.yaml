@@ -1,8 +1,0 @@
-name: plink
-dependencies:
-  - bioconda::plink
-  - bioconda::plink2
-  - bioconda::samtools
-  - bioconda::bcftools
-  - bioconda::beagle
-  - conda-forge::libgd
