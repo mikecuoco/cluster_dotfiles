@@ -2,7 +2,7 @@
 # Load our dotfiles like ~/.bash_prompt, etc…
 #   ~/.extra can be used for settings you don’t want to commit,
 #   Use it to configure your PATH, thus it being first in line.
-for file in ~/.{extra,bash_prompt,exports,aliases,functions}; do
+for file in ~/.{functions,extra,bash_prompt,exports,aliases}; do
     [ -r "$file" ] && source "$file"
 done
 unset file
@@ -42,7 +42,7 @@ export HISTFILESIZE=$HISTSIZE                   # big big history
 type shopt &> /dev/null && shopt -s histappend  # append to history, don't overwrite it
 
 # Don't record some commands
-export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
+# export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 
 # Save multi-line commands as one command
 shopt -s cmdhist
@@ -95,20 +95,6 @@ shopt -s dirspell 2> /dev/null
 
 # Turn on recursive globbing (enables ** to recurse all directories)
 shopt -s globstar 2> /dev/null
-
-##
-## load conda
-##
-if ! command -v conda &> /dev/null; then
-    echo "Conda is not installed, please install conda and source this file again."
-else
-    # check if mamba is installed
-    if ! command -v mamba &> /dev/null; then
-        echo  "installing mamba..."
-        conda install mamba -n base -c conda-forge -y
-    fi
-    conda activate shell
-fi
 
 # source z
 if [ ! -f ~/code/z.sh ]; then
