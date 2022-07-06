@@ -110,3 +110,5 @@ reslog=$(git log HEAD..origin/master --oneline)
 if [[ "${reslog}" != "" ]] ; then
     git pull
 fi
+
+cd -
