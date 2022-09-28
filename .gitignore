@@ -13,8 +13,9 @@ third_party/WebKit/Source/devtools/front_end/audits2/lighthouse/renderer/report-
 .vim/swaps/*
 .vim/undo
 
-# git credential file
+# credentials files
 .gitconfig.local
+.boto 
 
 # API keys and other credentials
 .extra
@@ -22,17 +23,9 @@ third_party/WebKit/Source/devtools/front_end/audits2/lighthouse/renderer/report-
 # no thx
 node_modules
 
-# Folder view configuration files
-.DS_Store
-Desktop.ini
-
 # Thumbnail cache files
 ._*
 Thumbs.db
-
-# Files that might appear on external disks
-.Spotlight-V100
-.Trashes
 
 # Compiled Python files
 *.pyc
