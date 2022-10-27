@@ -7,7 +7,7 @@ for file in ~/.{functions,extra,bash_prompt,exports,aliases}; do
 done
 unset file
 
-# to help sublimelinter etc with finding my PATHS
+# to help vscode etc with finding my PATHS
 case $- in
    *i*) source ~/.extra
 esac
@@ -97,13 +97,13 @@ shopt -s dirspell 2> /dev/null
 shopt -s globstar 2> /dev/null
 
 # source z
-if [ ! -f ~/code/z.sh ]; then
-    curl https://raw.githubusercontent.com/rupa/z/master/z.sh > ~/code/z.sh
+cd "$(dirname $(realpath $HOME/.bash_profile))"
+if [ ! -f z.sh ]; then
+    curl https://raw.githubusercontent.com/rupa/z/master/z.sh > z.sh
 fi
-. ~/code/z.sh
+. z.sh
 
 #  check for updates
-cd ~/code/cluster_dotfiles
 git fetch
 reslog=$(git log HEAD..origin/master --oneline)
 # pull only if needed
