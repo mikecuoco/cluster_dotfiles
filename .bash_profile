@@ -70,10 +70,7 @@ fi;
 if [ ! -f ~/.git-completion.bash ]; then
     curl -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash > ~/.git-completion.bash
 fi
-
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
+. ~/.git-completion.bash
 
 
 # Add tab completion for `defaults read|write NSGlobalDomain`
@@ -103,12 +100,15 @@ if [ ! -f z.sh ]; then
 fi
 . z.sh
 
-#  check for updates
-git fetch
-reslog=$(git log HEAD..origin/master --oneline)
-# pull only if needed
-if [[ "${reslog}" != "" ]] ; then
-    git pull
+##
+## load conda
+##
+if ! command -v conda &> /dev/null; then
+    echo "Conda is not installed, please install conda and source this file again. Use setup_conda.sh"
+else
+    conda activate shell
+    # add bash completions 
+    `snakemake --bash-completion`
 fi
 
 cd - > /dev/null
