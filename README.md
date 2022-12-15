@@ -37,7 +37,7 @@ gh setup-git
 - `.bashrc`
 - `.exports`
 - `.functions`
-- `.extra` - git ignored, explained below
+- `.extra` - git ignored, for private config
 
 #### manual run
 - `conda-setup.sh` - install conda, using [mambaforge-pypy3](https://github.com/conda-forge/miniforge/)
@@ -49,12 +49,7 @@ gh setup-git
 - `.gitconfig`
 - `.gitignore`
 
-### `.extra` for private configuration
-
-There will be items that don't belong to be committed to a git repo, because either 1) it shoudn't be the same across your machines or 2) it shouldn't be in a git repo. Kick it off like this:
-
-`touch ~/.extra && $EDITOR $_`
-
 ## TO-DOs
 
 - [ ] setup or remove cron
+- [ ] speed up startup scripts
