@@ -38,4 +38,4 @@ start=$(grep -n ">>> conda initialize >>>" $HOME/.bashrc | cut -d: -f1)
 end=$(grep -n "<<< conda initialize <<<" $HOME/.bashrc | cut -d: -f1)
 touch .extra
 sed -n "${start},${end}p" $HOME/.bashrc >> .extra
-head -n+"$(expr $start - 1)" $HOME/.bashrc > $HOME/.bashrc
+head -n+$start $HOME/.bashrc > $HOME/.bashrc
