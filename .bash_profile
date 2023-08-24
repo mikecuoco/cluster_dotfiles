@@ -104,7 +104,7 @@ fi
 ## load conda
 ##
 if ! command -v conda &> /dev/null; then
-    echo "Conda is not installed, please install conda and source this file again. Use setup_conda.sh"
+    echo "Conda is not installed, please install conda and source this file again. Use conda-setup.sh"
 else
     conda activate shell
     # add bash completions 
