@@ -34,8 +34,8 @@ source "$PREFIX_PATH/conda/etc/profile.d/conda.sh"
 conda init bash
 
 # move conda init to .extra
-start=$(grep -n ">>> conda initialize >>>" $HOME/.bashrc | cut -d: -f1)
-end=$(grep -n "<<< conda initialize <<<" $HOME/.bashrc | cut -d: -f1)
-touch .extra
-sed -n "${start},${end}p" $HOME/.bashrc >> .extra
-head -n+$start $HOME/.bashrc > $HOME/.bashrc
+# start=$(grep -n ">>> conda initialize >>>" $HOME/.bashrc | cut -d: -f1)
+# end=$(grep -n "<<< conda initialize <<<" $HOME/.bashrc | cut -d: -f1)
+# touch .extra
+# sed -n "${start},${end}p" $HOME/.bashrc >> .extra
+# head -n+$start $HOME/.bashrc > $HOME/.bashrc
