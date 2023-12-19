@@ -27,9 +27,9 @@ fi
 
 # download and install mambaforge
 echo "Downloading latest version of Mambaforge"
-curl -L -O https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-pypy3-Linux-x86_64.sh > Mambaforge-pypy3-Linux-x86_64.sh
-bash Mambaforge-pypy3-Linux-x86_64.sh -b -p "$PREFIX_PATH/conda"
-rm -f Mambaforge-pypy3-Linux-x86_64.sh
+curl -L -O https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh > miniforge.sh
+bash miniforge.sh -b -p "$PREFIX_PATH/conda"
+rm -f miniforge.sh
 source "$PREFIX_PATH/conda/etc/profile.d/conda.sh"
 conda init bash
 
