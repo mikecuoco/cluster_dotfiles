@@ -100,12 +100,4 @@ if [ ! -f z.sh ]; then
 fi
 . z.sh
 
-##
-## load conda
-##
-if ! command -v conda &> /dev/null; then
-    echo "Conda is not installed, please install conda and source this file again. Use setup_conda.sh"
-fi
-
-
 cd - > /dev/null
