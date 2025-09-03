@@ -13,11 +13,20 @@ fi
 
 # here's LS_COLORS
 # github.com/trapd00r/LS_COLORS
-command -v gdircolors >/dev/null 2>&1 || alias gdircolors="dircolors"
-eval "$(gdircolors -b ~/.dircolors)"
 
-# Aliases
-alias python=python3
+# Try to use gdircolors if available, otherwise fallback to dircolors.
+if command -v gdircolors >/dev/null 2>&1; then
+    _dircolors_cmd="gdircolors"
+elif command -v dircolors >/dev/null 2>&1; then
+    _dircolors_cmd="dircolors"
+else
+    _dircolors_cmd=""
+fi
+
+if [ -n "$_dircolors_cmd" ] && [ -r "$HOME/.dircolors" ]; then
+    eval "$("$_dircolors_cmd" -b "$HOME/.dircolors")"
+fi
+unset _dircolors_cmd
 
 # Convinience variables
 export DATE=$(date "+%Y-%m-%d%n")
